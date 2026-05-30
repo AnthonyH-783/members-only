@@ -3,8 +3,14 @@
 @import "./base/reset.css";
 @import "./base/typography.css";
 
-/* Components */
 
+/* Components */
+@import "./components/sidebar.css";
 
 /* Pages */
 
+
+
+body{
+    border-top: 3px solid var(--color-accent);
+}

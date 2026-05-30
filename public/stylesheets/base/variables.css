@@ -1,84 +1,136 @@
 :root {
-  /* Backgrounds */
-  --bg-page:    #0C0E15;
-  --bg-card:    #13161F;
-  --bg-input:   #1A1D28;
-  --bg-subtle:  #21253A;
+  /* =========================================================
+     SURFACES
+  ========================================================= */
 
-  /* Borders */
+  --surface-0: #0C0E15; /* page background */
+  --surface-1: #13161F; /* cards / sidebar */
+  --surface-2: #1A1D28; /* inputs / elevated */
+  --surface-3: #21253A; /* hover / subtle */
+
+  /* =========================================================
+     BORDERS
+  ========================================================= */
+
+  --border-subtle: #1F2330;
   --border-default: #272B3C;
+  --border-strong: #34394F;
 
-  /* Brand */
-  --accent-gold: #D4A853;
+  /* =========================================================
+     TEXT
+  ========================================================= */
 
-  /* Role colours */
-  --role-member: #52C497;
-  --role-admin:  #8B72D8;
-  --role-guest:  #D4A853;
-
-  /* Semantic */
-  --color-danger: #E06C75;
-  --color-info:   #5BA4D4;
-
-  /* Role background tints */
-  --tint-member: #142018;
-  --tint-admin:  #1E1A30;
-  --tint-guest:  #211D10;
-  --tint-danger: #201418;
-  --tint-info:   #101828;
-
-  /* Text */
-  --text-primary:   #EAE6DE;
+  --text-primary: #EAE6DE;
   --text-secondary: #858AA5;
-  --text-muted:     #3E435C;
+  --text-muted: #555B73;
 
-  /* Radii */
-  --radius-sm:   6px;
-  --radius-md:   8px;
-  --radius-lg:   10px;
-  --radius-xl:   12px;
-  --radius-pill: 999px;
+  /* =========================================================
+     ACCENTS & SEMANTIC COLOURS
+  ========================================================= */
 
-  /* Spacing */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
+  --color-accent: #D4A853;
 
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-base: 0.25s ease;
+  --color-danger: #E06C75;
+  --color-info: #5BA4D4;
+  --color-success: #52C497;
+  --color-warning: #D4A853;
 
-  /* Typography scale */
-  --text-xs:   11px;
-  --text-sm:   13px;
-  --text-base: 15px;
-  --text-lg:   18px;
-  --text-xl:   22px;
-  --text-2xl:  28px;
-  --text-3xl:  36px;
+  /* =========================================================
+     ROLE COLOURS
+  ========================================================= */
 
-  /* Font weights */
-  --weight-light:   300;
+  --role-member: #52C497;
+  --role-admin: #8B72D8;
+  --role-guest: #D4A853;
+
+  /* =========================================================
+     ROLE TINTS
+  ========================================================= */
+
+  --tint-member: #142018;
+  --tint-admin: #1E1A30;
+  --tint-guest: #211D10;
+
+  --tint-danger: #201418;
+  --tint-info: #101828;
+
+  /* =========================================================
+     TYPOGRAPHY
+  ========================================================= */
+
+  --font-sans:
+    'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Font Sizes */
+  --text-xs: 0.6875rem;  /* 11px */
+  --text-sm: 0.8125rem;  /* 13px */
+  --text-base: 0.9375rem; /* 15px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.375rem;   /* 22px */
+  --text-2xl: 1.75rem;   /* 28px */
+  --text-3xl: 2.25rem;   /* 36px */
+
+  /* Font Weights */
+  --weight-light: 300;
   --weight-regular: 400;
-  --weight-medium:  500;
-  --weight-bold:    700;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
 
-  /* Line heights */
+  /* Line Heights */
   --leading-tight: 1.2;
-  --leading-snug:  1.4;
-  --leading-base:  1.65;
+  --leading-snug: 1.4;
+  --leading-base: 1.65;
   --leading-loose: 1.85;
 
-  /* Letter spacing */
-  --tracking-tight:  -0.03em;
-  --tracking-snug:   -0.01em;
-  --tracking-normal:  0em;
-  --tracking-wide:    0.04em;
+  /* Letter Spacing */
+  --tracking-tight: -0.03em;
+  --tracking-snug: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
 
-  /* Font families */
-  --font-sans: 'Poppins', system-ui, sans-serif;
+  /* =========================================================
+     SPACING
+  ========================================================= */
+
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem;  /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem;    /* 16px */
+  --space-5: 1.5rem;  /* 24px */
+  --space-6: 2rem;    /* 32px */
+  --space-7: 3rem;    /* 48px */
+  --space-8: 4rem;    /* 64px */
+
+  /* =========================================================
+     RADII
+  ========================================================= */
+
+  --radius-sm: 0.5rem;   /* 8px */
+  --radius-md: 0.75rem;  /* 12px */
+  --radius-pill: 999px;
+
+  /* =========================================================
+     SHADOWS
+  ========================================================= */
+
+  --shadow-sm:
+    0 1px 2px rgba(0, 0, 0, 0.2);
+
+  --shadow-md:
+    0 8px 24px rgba(0, 0, 0, 0.32);
+
+  /* =========================================================
+     TRANSITIONS
+  ========================================================= */
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  /* =========================================================
+     LAYOUT
+  ========================================================= */
+
+  --sidebar-width: clamp(14rem, 18vw, 17rem);
+  --container-width: 80rem;
 }

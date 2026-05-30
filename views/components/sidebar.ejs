@@ -1,0 +1,134 @@
+<aside class="sidebar">
+
+  <div class="sidebar__top">
+
+    <!-- Brand -->
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">
+        M
+      </div>
+
+      <div class="sidebar__brand-copy">
+        <h2 class="sidebar__title">
+          Members Only
+        </h2>
+
+        <p class="sidebar__subtitle">
+          Exclusive Clubhouse
+        </p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar__nav">
+
+      <a
+        href="/"
+        class="sidebar__link <%= currentPage === 'board' ? 'sidebar__link--active' : '' %>"
+      >
+        <span>Message Board</span>
+      </a>
+
+      <% if (!currentUser?.isMember) { %>
+        <a
+          href="/join"
+          class="sidebar__link <%= currentPage === 'join' ? 'sidebar__link--active' : '' %>"
+        >
+          <span>Join Club</span>
+        </a>
+      <% } %>
+
+      <% if (currentUser) { %>
+        <a
+          href="/posts/new"
+          class="sidebar__link <%= currentPage === 'new-post' ? 'sidebar__link--active' : '' %>"
+        >
+          <span>New Post</span>
+        </a>
+      <% } %>
+
+      <% if (currentUser?.isAdmin) { %>
+        <a
+          href="/admin"
+          class="sidebar__link <%= currentPage === 'admin' ? 'sidebar__link--active' : '' %>"
+        >
+          <span>Admin Panel</span>
+        </a>
+      <% } %>
+
+    </nav>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="sidebar__footer">
+
+    <% if (currentUser) { %>
+
+      <div class="sidebar__user">
+
+        <div class="sidebar__avatar">
+          <%= currentUser.username.slice(0, 1) %>
+        </div>
+
+        <div class="sidebar__user-copy">
+
+          <div class="sidebar__user-top">
+            <h4 class="sidebar__username">
+              <%= currentUser.username %>
+            </h4>
+
+            <% if (currentUser.is_admin) { %>
+              <span class="sidebar__badge sidebar__badge--admin">
+                Admin
+              </span>
+
+            <% } else if (currentUser.is_member) { %>
+
+              <span class="sidebar__badge sidebar__badge--member">
+                Member
+              </span>
+
+              <a class="sidebar__logout"  href="/log-out">Log out</a>
+
+            <% } else { %>
+
+              <span class="sidebar__badge sidebar__badge--guest">
+                Guest
+              </span>
+
+            <% } %>
+
+          </div>
+
+          <small class="sidebar__email">
+            <%= currentUser.email %>
+          </small>
+
+        </div>
+
+      </div>
+       
+
+    <% } else { %>
+
+      <div class="sidebar__guest-actions">
+
+        <a href="/log-in" class="sidebar__auth-button">
+          Log In
+        </a>
+
+        <a
+          href="/sign-up"
+          class="sidebar__auth-button sidebar__auth-button--primary"
+        >
+          Sign Up
+        </a>
+
+      </div>
+
+    <% } %>
+
+  </div>
+
+</aside>
