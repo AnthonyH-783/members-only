@@ -27,10 +27,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(configuredSession);
 app.use(passport.session());
 app.use(bindUser);
+app.use((req, res, next) => {
+    console.log(res.locals.currentUser);
+    next();
+});
 
 
 // Setting up routers
-console.log("I reached this point");
 app.use("/", pageRouter);
 app.use("/forms", formRouter);
 

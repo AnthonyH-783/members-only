@@ -29,7 +29,7 @@
         <span>Message Board</span>
       </a>
 
-      <% if (!currentUser?.isMember) { %>
+      <% if (!currentUser) { %>
         <a
           href="/join"
           class="sidebar__link <%= currentPage === 'join' ? 'sidebar__link--active' : '' %>"
@@ -47,7 +47,7 @@
         </a>
       <% } %>
 
-      <% if (currentUser?.isAdmin) { %>
+      <% if (currentUser && currentUser.role === 'admin') { %>
         <a
           href="/admin"
           class="sidebar__link <%= currentPage === 'admin' ? 'sidebar__link--active' : '' %>"
@@ -89,7 +89,9 @@
                 Member
               </span>
 
-              <a class="sidebar__logout"  href="/log-out">Log out</a>
+              <form action="/forms/log-out" method="post">
+                <button class="link sidebar__logout" type="submit">Log out</button>
+              </form>
 
             <% } else { %>
 

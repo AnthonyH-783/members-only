@@ -23,8 +23,6 @@ h1,
 h2,
 h3,
 h4 {
-  margin-block: 0;
-
   color: var(--text-primary);
 
   line-height: var(--leading-tight);
@@ -59,12 +57,9 @@ h4 {
 ========================================================= */
 
 p {
-  margin-block: 0;
 
   max-width: 68ch;
-
   color: var(--text-secondary);
-
   font-size: var(--text-base);
   line-height: var(--leading-base);
 }
@@ -73,7 +68,13 @@ p {
    LINKS
 ========================================================= */
 
-a {
+button.link{
+  background-color: transparent;
+  all: unset;
+  cursor: pointer;
+}
+
+a, button.link{
   color: var(--color-accent);
 
   text-decoration: none;
@@ -81,73 +82,8 @@ a {
   transition: opacity var(--transition-fast);
 }
 
-a:hover {
+
+a:hover, button.link:hover {
   opacity: 0.8;
 }
 
-/* =========================================================
-   SMALL TEXT
-========================================================= */
-
-small {
-  color: var(--text-muted);
-
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wide);
-}
-
-/* =========================================================
-   UTILITIES
-========================================================= */
-
-.text-xs {
-  font-size: var(--text-xs);
-}
-
-.text-sm {
-  font-size: var(--text-sm);
-}
-
-.text-base {
-  font-size: var(--text-base);
-}
-
-.text-lg {
-  font-size: var(--text-lg);
-}
-
-.text-xl {
-  font-size: var(--text-xl);
-}
-
-.text-primary {
-  color: var(--text-primary);
-}
-
-.text-secondary {
-  color: var(--text-secondary);
-}
-
-.text-muted {
-  color: var(--text-muted);
-}
-
-.font-light {
-  font-weight: var(--weight-light);
-}
-
-.font-regular {
-  font-weight: var(--weight-regular);
-}
-
-.font-medium {
-  font-weight: var(--weight-medium);
-}
-
-.font-semibold {
-  font-weight: var(--weight-semibold);
-}
-
-.font-bold {
-  font-weight: var(--weight-bold);
-}
