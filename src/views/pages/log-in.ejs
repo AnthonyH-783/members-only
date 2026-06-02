@@ -16,6 +16,12 @@
       <p class="auth-subtitle">
         Sign in to access the clubhouse
       </p>
+        <% if(locals.error){ %>
+          <div class="error">
+              <span><%=error%></span>
+          </div>
+
+        <%} %>
     </div>
 
     <div class="auth-body">

@@ -4,7 +4,7 @@ import passport from "passport";
 
 export const handleLogin = passport.authenticate("local",  {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/log-in?error=Wrong Email Or Password",
     failureMessage: true
     
 });
