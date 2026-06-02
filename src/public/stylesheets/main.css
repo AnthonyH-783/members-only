@@ -6,6 +6,7 @@
 
 /* Components */
 @import "./components/sidebar.css";
+@import "./components/error.css";
 
 /* Pages */
 

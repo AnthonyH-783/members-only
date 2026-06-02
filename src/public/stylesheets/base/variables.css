@@ -34,6 +34,9 @@
   --color-info: #5BA4D4;
   --color-success: #52C497;
   --color-warning: #D4A853;
+  --color-error-bg: #651717;
+  --color-error-border: #f87171;
+  --color-error-text: #b91c1c;
 
   /* =========================================================
      ROLE COLOURS
