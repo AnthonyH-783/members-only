@@ -68,22 +68,22 @@
       <div class="sidebar__user">
 
         <div class="sidebar__avatar">
-          <%= currentUser.username.slice(0, 1) %>
+          <%= currentUser.first_name.slice(0, 1) %>
         </div>
 
         <div class="sidebar__user-copy">
 
           <div class="sidebar__user-top">
             <h4 class="sidebar__username">
-              <%= currentUser.username %>
+              <%= currentUser.first_name  %>
             </h4>
 
-            <% if (currentUser.is_admin) { %>
+            <% if (currentUser.role === "admin") { %>
               <span class="sidebar__badge sidebar__badge--admin">
                 Admin
               </span>
 
-            <% } else if (currentUser.is_member) { %>
+            <% } else if (currentUser.role === "member") { %>
 
               <span class="sidebar__badge sidebar__badge--member">
                 Member

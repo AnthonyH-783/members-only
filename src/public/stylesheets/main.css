@@ -9,7 +9,7 @@
 
 /* Pages */
 
-
+@import "./pages/auth.css";
 
 body{
     border-top: 3px solid var(--color-accent);

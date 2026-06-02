@@ -3,7 +3,7 @@ const passport = require("./authentication/passport");
 require("dotenv").config();
 const configuredSession = require("./authentication/session");
 const path = require("node:path");
-const indexRouter = require("./routes/index");
+const indexRouter = require("./src/routes/index");
 const usersController = require("./controllers/usersController");
 
 
@@ -24,6 +24,7 @@ app.use((req, res, next) => {
  res.locals.currentUser = req.user;
  next();
 });
+app.use("/", indexRouter);
 
 app.get("/", (req, res) => res.render("index"));
 
@@ -32,9 +33,18 @@ app.post("/login", passport.authenticate("local", {
     failureRedirect: "/"
 }));
 
-app.post("/signup", usersController.saveUser);
+
 
 app.get("/signup", (req, res) => res.render("signup"));
+
+app.get("/log-out", (req, res, next) => {
+    req.logOut((err) => {
+        if(err){
+            return next(err);
+        }
+        res.redirect("/");
+    })
+})
 
 
 const port = process.env.PORT;

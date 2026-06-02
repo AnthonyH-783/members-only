@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <title>Log in</title>
+</head>
+<body>
+    <div class="auth-page">
+
+  <form class="auth-card" action="/log-in" method="POST">
+
+    <div class="auth-header">
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-subtitle">
+        Sign in to access the clubhouse
+      </p>
+    </div>
+
+    <div class="auth-body">
+
+      <div class="auth-field">
+        <label for="email" class="auth-label">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="auth-input"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div class="auth-field">
+        <label for="password" class="auth-label">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="auth-input"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+    </div>
+
+    <div class="auth-actions">
+
+      <button type="submit" class="auth-button auth-button--primary font-bold">
+        Log in
+      </button>
+
+      <a href="/sign-up" class="auth-link">
+        Don't have an account? Sign up
+      </a>
+
+    </div>
+
+  </form>
+
+</div>
+    
+</body>
+</html>

@@ -1,8 +1,8 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy, IVerifyOptions } from 'passport-local';
-import * as db from "../db/queries";
+import * as db from "../db/queries.js";
 import bcrypt from "bcrypt";
-import { localLogin, verifyDone } from '../types';
+import { localLogin, verifyDone } from '../types.js';
 
 const customFields: localLogin = {
     usernameField:"email",
@@ -16,8 +16,6 @@ declare global {
     }
   }
 }
-
-
 const verifyCallback = async(email: string, password: string, done: verifyDone) => {
 
     try{

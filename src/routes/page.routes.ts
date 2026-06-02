@@ -1,0 +1,13 @@
+import express from "express";
+import passport from "passport";
+
+const pageRouter = express.Router();
+
+pageRouter.get("/", (req, res) => res.render("index"));
+
+pageRouter.get("/log-in", (req, res) => res.render("pages/log-in"));
+
+pageRouter.get("/sign-up", (req, res) => res.render("pages/sign-up"));
+
+
+export default pageRouter;

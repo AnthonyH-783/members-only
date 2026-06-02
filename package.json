@@ -1,15 +1,18 @@
 {
   "name": "members-only",
   "version": "1.0.0",
+  "type": "module",
   "description": "Private message board with authentication and anonymous posts.",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch app.js",
+    "dev": "npx tsx --watch src/app.ts",
     "seed": "node db/init.js"
   },
   "author": "Anthony Hani",
   "license": "ISC",
   "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
     "bcrypt": "^6.0.0",
     "connect-pg-simple": "^10.0.0",
     "dotenv": "^17.4.2",
@@ -20,5 +23,18 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "pg": "^8.21.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/connect-pg-simple": "^7.0.3",
+    "@types/express": "^5.0.6",
+    "@types/express-session": "^1.19.0",
+    "@types/node": "^25.9.1",
+    "@types/passport": "^1.0.17",
+    "@types/passport-local": "^1.0.38",
+    "@types/pg": "^8.20.0",
+    "prisma": "^7.8.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   }
 }

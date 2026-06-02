@@ -1,6 +1,6 @@
 import { QueryResult } from "pg";
-import pool from "./pool";
-import {user} from "../types";
+import pool from "./pool.js";
+import {newUser} from "../types.js";
 
 export const getUserByEmail = async (email: string) => {
 
@@ -17,7 +17,7 @@ export const getUserById = async (id: number) => {
     return user;
 }
 
-export const addUser = async({firstName, lastName, email, passwordHash, role} : user) => {
+export const addUser = async({firstName, lastName, email, passwordHash, role} : newUser) => {
     const query = `INSERT INTO users (first_name, last_name, email, password_hash, role)
                     VALUES ($1, $2, $3, $4, $5) `;
     await pool.query(query, [firstName, lastName, email, passwordHash, role]);

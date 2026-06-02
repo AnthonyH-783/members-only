@@ -1,6 +1,7 @@
 import session, { SessionOptions } from "express-session";
 import PostgresAdapter from "connect-pg-simple";
-import pool from "../db/pool"
+import pool from "../db/pool.js"
+import {COOKIE_SECRET} from "../config/env.js";
 
 
 const PGStore = PostgresAdapter(session);
@@ -11,7 +12,7 @@ const pgStore = new PGStore({
 });
 
 // Creating Session Configuration Object
-const secret = process.env.COOKIE_SECRET;
+const secret = COOKIE_SECRET;
 if (!secret) {
     throw new Error("COOKIE_SECRET environment variable is not set");
 }

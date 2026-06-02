@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <title>Sign up</title>
+</head>
+<body>
+    <div class="auth-page">
+
+    <form class="auth-card" action="/sign-up" method="POST">
+
+        <div class="auth-header">
+        <h1>Create Account</h1>
+
+        <p class="auth-subtitle">
+            Join the Members Only clubhouse.
+        </p>
+        </div>
+
+        <div class="auth-body">
+
+        <div class="auth-field">
+            <label for="firstName" class="auth-label">
+            First Name
+            </label>
+
+            <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            class="auth-input"
+            placeholder="John"
+            required
+            />
+        </div>
+
+        <div class="auth-field">
+            <label for="lastName" class="auth-label">
+            Last Name
+            </label>
+
+            <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            class="auth-input"
+            placeholder="Doe"
+            required
+            />
+        </div>
+
+        <div class="auth-field">
+            <label for="email" class="auth-label">
+            Email
+            </label>
+
+            <input
+            id="email"
+            name="email"
+            type="email"
+            class="auth-input"
+            placeholder="you@example.com"
+            required
+            />
+        </div>
+
+        <div class="auth-field">
+            <label for="password" class="auth-label">
+            Password
+            </label>
+
+            <input
+            id="password"
+            name="password"
+            type="password"
+            class="auth-input"
+            placeholder="••••••••"
+            required
+            />
+        </div>
+
+        <div class="auth-field">
+            <label for="confirmPassword" class="auth-label">
+            Confirm Password
+            </label>
+
+            <input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            class="auth-input"
+            placeholder="••••••••"
+            required
+            />
+        </div>
+
+        </div>
+
+        <div class="auth-actions">
+
+        <button
+            type="submit"
+            class="auth-button auth-button--primary"
+        >
+            Create Account
+        </button>
+
+        <a
+            href="/log-in"
+            class="auth-link"
+        >
+            Already have an account? Log in
+        </a>
+
+        </div>
+
+    </form>
+
+    </div>
+    
+</body>
+</html>

@@ -9,6 +9,14 @@ export interface user{
     role: role
 }
 
+export interface newUser{
+    firstName: string,
+    lastName: string,
+    email: string,
+    passwordHash: string,
+    role: role
+}
+
 export interface localLogin{
     usernameField: string,
     passwordField: string
