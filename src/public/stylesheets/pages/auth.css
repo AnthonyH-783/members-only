@@ -8,8 +8,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  position: relative;
   background: var(--surface-0);
+}
+.go-back{
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
 }
 
 /* =========================================================
