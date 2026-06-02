@@ -3,6 +3,7 @@ import { Strategy as LocalStrategy, IVerifyOptions } from 'passport-local';
 import * as db from "../db/queries.js";
 import bcrypt from "bcrypt";
 import { localLogin, verifyDone } from '../types.js';
+import { Request, Response, NextFunction } from 'express';
 
 const customFields: localLogin = {
     usernameField:"email",

@@ -1,11 +1,13 @@
-import { passwordValid, matchPasswordValid, firstNameValid, lastNameValid, emailValid } from "./user.validation.js";
+import { passwordValid, matchPasswordValid, firstNameValid, lastNameValid, emailValid, isAlreadyRegistered } from "./user.validation.js";
 
 export const registerValidation = [
     firstNameValid(),
     lastNameValid(),
     emailValid(),
     passwordValid(),
-    matchPasswordValid()
+    matchPasswordValid(),
+    isAlreadyRegistered()
+    
 ]
 
 // Login handled by passport js

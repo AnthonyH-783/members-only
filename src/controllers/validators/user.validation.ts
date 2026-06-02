@@ -1,5 +1,5 @@
 import {body} from "express-validator";
-
+import * as db from "../../db/queries.js";
 
 export const passwordValid = () => {
     const emptyErr = "Password is required";
@@ -49,6 +49,17 @@ export const lastNameValid = () => {
         body("lastName").trim().notEmpty().withMessage(`${emptyErr}`)
         .isAlpha().withMessage(`${alphaNumErr}`)
         .isLength({max: 20}).withMessage(`${lengthErr}`)
+    )
+}
+
+export const isAlreadyRegistered = () => {
+    return(
+        body("email").custom( async (value) => {
+            const existingUser = await db.getUserByEmail(value);
+            if(existingUser){
+                throw new Error("User with given email already exists");
+            }
+        })
     )
 }
 
