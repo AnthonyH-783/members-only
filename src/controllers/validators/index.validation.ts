@@ -1,4 +1,6 @@
-import { passwordValid, matchPasswordValid, firstNameValid, lastNameValid, emailValid, isAlreadyRegistered } from "./user.validation.js";
+import { ValidationChain } from "express-validator";
+import { passwordValid, matchPasswordValid, firstNameValid, lastNameValid, emailValid,
+     isAlreadyRegistered, passcodeVerification } from "./user.validation.js";
 
 export const registerValidation = [
     firstNameValid(),
@@ -6,8 +8,10 @@ export const registerValidation = [
     emailValid(),
     passwordValid(),
     matchPasswordValid(),
-    isAlreadyRegistered()
-    
+    isAlreadyRegistered(),
+   
 ]
+
+export const verifyPasscode = passcodeVerification();
 
 // Login handled by passport js

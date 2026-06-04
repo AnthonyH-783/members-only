@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import * as db from "../db/queries.js";
-import {Request, Response} from "express";
+import {Request, Response, NextFunction} from "express";
 import { role } from "../types.js";
 import { validationResult, matchedData } from "express-validator";
 
@@ -22,4 +22,24 @@ export const saveUser = async(req: Request, res: Response) => {
         catch(err){
             res.status(500).json(err);
         }
+}
+
+export const promoteToMember = async (req: Request, res: Response, next: NextFunction) => {
+
+    try {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            const errorMessage = "Wrong Passcode";
+            res.redirect(`/join/error=${errorMessage}`);
+        }
+      
+        const {id} = res.locals.currentUser;
+        await db.updateUserToMember(id);
+       
+        
+    } catch (error) {
+        next(error);
+        
+    }
+
 }

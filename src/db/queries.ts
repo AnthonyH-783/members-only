@@ -22,3 +22,11 @@ export const addUser = async({firstName, lastName, email, passwordHash, role} : 
                     VALUES ($1, $2, $3, $4, $5) `;
     await pool.query(query, [firstName, lastName, email, passwordHash, role]);
 }
+
+export const updateUserToMember = async(id: number) => {
+    const query:string = `UPDATE users
+                          SET role = 'guest'
+                          WHERE id = $1`;
+    await pool.query(query, [id]);
+
+}

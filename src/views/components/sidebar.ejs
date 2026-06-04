@@ -29,7 +29,7 @@
         <span>Message Board</span>
       </a>
 
-      <% if (!currentUser) { %>
+      <% if (currentUser && currentUser.role === "guest") { %>
         <a
           href="/join"
           class="sidebar__link <%= currentPage === 'join' ? 'sidebar__link--active' : '' %>"
@@ -38,7 +38,7 @@
         </a>
       <% } %>
 
-      <% if (currentUser) { %>
+      <% if (currentUser && currentUser.role !== "guest") { %>
         <a
           href="/posts/new"
           class="sidebar__link <%= currentPage === 'new-post' ? 'sidebar__link--active' : '' %>"
@@ -89,9 +89,7 @@
                 Member
               </span>
 
-              <form action="/forms/log-out" method="post">
-                <button class="link sidebar__logout" type="submit">Log out</button>
-              </form>
+
 
             <% } else { %>
 
@@ -106,8 +104,11 @@
           <small class="sidebar__email">
             <%= currentUser.email %>
           </small>
-
+        <form action="/forms/log-out" method="post">
+            <button class="link sidebar__logout" type="submit">Log out</button>
+        </form>
         </div>
+        
 
       </div>
        

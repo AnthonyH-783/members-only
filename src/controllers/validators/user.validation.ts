@@ -1,5 +1,6 @@
 import {body} from "express-validator";
 import * as db from "../../db/queries.js";
+import { PASSCODE } from "../../config/env.js";
 
 export const passwordValid = () => {
     const emptyErr = "Password is required";
@@ -58,6 +59,16 @@ export const isAlreadyRegistered = () => {
             const existingUser = await db.getUserByEmail(value);
             if(existingUser){
                 throw new Error("User with given email already exists");
+            }
+        })
+    )
+}
+
+export const passcodeVerification = () => {
+    return (
+        body("password").custom((value) => {
+            if(PASSCODE && value !== PASSCODE){
+                throw new Error("Wrong passcode");
             }
         })
     )
