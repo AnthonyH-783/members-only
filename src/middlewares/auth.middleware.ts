@@ -1,5 +1,6 @@
 import {Request, Response, NextFunction} from "express";
 import { role } from "../types";
+import { AppError } from "./error.middleware";
 
 export const bindUser = (req: Request, res: Response, next: NextFunction) => {
     if(req.user){
@@ -13,8 +14,7 @@ export const bindUser = (req: Request, res: Response, next: NextFunction) => {
 
 export const restrictToRole = (role: role) => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const accessErr = new Error("Unauthorized");
-        (accessErr as any).status = 401;
+        const accessErr = new AppError(401, "Unauthorized");
         if(!req.user){
             return next(accessErr); // skip if Unauthenticated
         }
@@ -26,8 +26,7 @@ export const restrictToRole = (role: role) => {
 }
 
 export const restrictToUnauth = (req: Request, res: Response, next: NextFunction) =>{
-    const accessErr = new Error("Forbidden");
-    (accessErr as any).status = 403;
+    const accessErr = new AppError(403, "Forbidden");
     if(res.locals.currentUser){
         return next(accessErr);
     }
