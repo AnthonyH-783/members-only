@@ -33,7 +33,7 @@ export const restrictToUnauth = (req: Request, res: Response, next: NextFunction
     next();
 }
 
-export const restrictToAuth = (req: Request, res: Response, next: NextFunction) => {
+export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
     if(!req.isAuthenticated()){
         const query =  new URLSearchParams();
         query.append("error", "You must be logged-in to perform this action")

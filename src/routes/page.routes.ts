@@ -1,6 +1,6 @@
 import express from "express";
 import { Request, Response, NextFunction } from "express";
-import { restrictToRole, restrictToUnauth } from "../middlewares/auth.middleware";
+import { restrictToRole, restrictToUnauth, requireAuth } from "../middlewares/auth.middleware";
 
 
 const pageRouter = express.Router();
@@ -21,6 +21,8 @@ pageRouter.get("/join", restrictToRole("guest"), formRenderer("join"));
 pageRouter.get("/log-in", restrictToUnauth, formRenderer("log-in"));
 
 pageRouter.get("/sign-up", restrictToUnauth, formRenderer("sign-up"));
+
+pageRouter.get("/posts/new", requireAuth, formRenderer("newPost"));
 
 
 

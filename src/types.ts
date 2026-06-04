@@ -17,6 +17,12 @@ export interface newUser{
     role: role
 }
 
+export interface newPost{
+    authorId: string,
+    title: string,
+    message: string
+}
+
 export interface localLogin{
     usernameField: string,
     passwordField: string
