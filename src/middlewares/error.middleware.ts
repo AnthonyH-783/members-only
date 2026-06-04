@@ -1,13 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 
-class AppError extends Error {
+export class AppError extends Error {
   constructor(public statusCode: number, message: string) {
     super(message);
     this.name = 'AppError';
   }
 }
 
-const errorHandler = (
+export const errorHandler = (
   err: unknown,
   req: Request,
   res: Response,
@@ -20,4 +20,3 @@ const errorHandler = (
   res.status(500).json({ message: 'Internal server error' });
 };
 
-export default errorHandler;

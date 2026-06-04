@@ -30,11 +30,12 @@ export const promoteToMember = async (req: Request, res: Response, next: NextFun
         const errors = validationResult(req);
         if(!errors.isEmpty()){
             const errorMessage = "Wrong Passcode";
-            res.redirect(`/join/error=${errorMessage}`);
+            res.redirect(`/join/?error=${errorMessage}`);
         }
       
         const {id} = res.locals.currentUser;
         await db.updateUserToMember(id);
+        res.redirect("/");
        
         
     } catch (error) {
