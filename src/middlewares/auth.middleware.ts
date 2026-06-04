@@ -1,6 +1,8 @@
 import {Request, Response, NextFunction, urlencoded} from "express";
 import { role } from "../types";
 import { AppError } from "./error.middleware";
+import * as db from "../db/queries";
+import { PostRecord } from "../types";
 
 export const bindUser = (req: Request, res: Response, next: NextFunction) => {
     if(req.user){
@@ -40,4 +42,21 @@ export const requireAuth = (req: Request, res: Response, next: NextFunction) => 
         return res.redirect(`/log-in?${query}`);
     }
     next();
+}
+
+export const requireOwnerOrAdmin = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const {postId} = req.params;
+        const post:PostRecord = await db.getPostById(Number(postId));
+        if(res.locals.currentUser.id !== post.authorId && res.locals.currentUser.role !== "admin"){
+            return next(new AppError(403, "Action requires owner or admin"));
+        }
+        next();
+        
+    } catch (error) {
+        const err = new AppError(500, "Failed to retrieve post for authentication");
+        next(err);
+        
+    }
+
 }

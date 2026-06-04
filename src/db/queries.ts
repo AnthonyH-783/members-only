@@ -1,8 +1,8 @@
 import { QueryResult } from "pg";
 import pool from "./pool.js";
-import {newUser, newPost} from "../types.js";
+import {newUser, newPost, PostRecord, UserRecord} from "../types.js";
 
-export const getUserByEmail = async (email: string) => {
+export const getUserByEmail = async (email: string): Promise<UserRecord> => {
 
     const query: string = "SELECT * FROM users WHERE email = $1";
     const {rows}: QueryResult<any> = await pool.query(query, [email]);
@@ -35,4 +35,11 @@ export const addPost = async({authorId, title, message}: newPost) => {
     const query:string = `INSERT INTO posts (authorId, title, message)
                           VALUES ($1, $2, $3)`;
     await pool.query(query, [authorId, title, message])
+}
+
+export const getPostById = async(postId:number): Promise<PostRecord> => {
+    const query:string = `SELECT * FROM posts WHERE id = $1`;
+    const {rows} =  await pool.query(query, [postId]);
+    const post = rows[0];
+    return post;
 }

@@ -41,3 +41,12 @@ export interface UserRecord {
     updatedAt: Date;
 }
 
+export interface PostRecord{
+    id: number,
+    authorId: number,
+    title: string,
+    message: string,
+    createdAt: Date,
+    updatedAt: Date
+}
+
