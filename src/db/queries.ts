@@ -25,7 +25,7 @@ export const addUser = async({firstName, lastName, email, passwordHash, role} : 
 
 export const updateUserToMember = async(id: number) => {
     const query:string = `UPDATE users
-                          SET role = 'guest'
+                          SET role = 'member'
                           WHERE id = $1`;
     await pool.query(query, [id]);
 
