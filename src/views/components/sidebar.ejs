@@ -64,53 +64,59 @@
   <div class="sidebar__footer">
 
     <% if (currentUser) { %>
-
+      <!-- User container -->
       <div class="sidebar__user">
+        <!--Top row of container (avatar, name, membership status )-->
+        <div class="sidebar__user-top">
+          <!-- Avatar -->
+          <div class="sidebar__avatar">
+            <%= currentUser.first_name.slice(0, 1) %>
+          </div>
+          <!-- Name and membership -->
+          <div class="sidebar__user-copy">
+              <h4 class="sidebar__username">
+                <%= currentUser.first_name  %>
+              </h4>
 
-        <div class="sidebar__avatar">
-          <%= currentUser.first_name.slice(0, 1) %>
-        </div>
+              <% if (currentUser.role === "admin") { %>
+                <span class="sidebar__badge sidebar__badge--admin">
+                  Admin
+                </span>
 
-        <div class="sidebar__user-copy">
+              <% } else if (currentUser.role === "member") { %>
 
-          <div class="sidebar__user-top">
-            <h4 class="sidebar__username">
-              <%= currentUser.first_name  %>
-            </h4>
-
-            <% if (currentUser.role === "admin") { %>
-              <span class="sidebar__badge sidebar__badge--admin">
-                Admin
-              </span>
-
-            <% } else if (currentUser.role === "member") { %>
-
-              <span class="sidebar__badge sidebar__badge--member">
-                Member
-              </span>
+                <span class="sidebar__badge sidebar__badge--member">
+                  Member
+                </span>
 
 
 
-            <% } else { %>
+              <% } else { %>
 
-              <span class="sidebar__badge sidebar__badge--guest">
-                Guest
-              </span>
+                <span class="sidebar__badge sidebar__badge--guest">
+                  Guest
+                </span>
 
-            <% } %>
+              <% } %>
 
           </div>
+        </div>
 
-          <small class="sidebar__email">
+        <!-- Email and logout link -->
+        <div class="sidebar__user-bottom">
+
+           <small class="sidebar__email">
             <%= currentUser.email %>
           </small>
-        <form action="/forms/log-out" method="post">
-            <button class="link sidebar__logout" type="submit">Log out</button>
-        </form>
-        </div>
-        
 
-      </div>
+          <form class="sidebar__logout" action="/forms/log-out" method="post">
+            <button class="link" type="submit">Log out</button>
+          </form>
+        </div>
+ 
+
+                 
+      
        
 
     <% } else { %>
@@ -131,6 +137,8 @@
       </div>
 
     <% } %>
+
+  </div>
 
   </div>
 
