@@ -1,4 +1,4 @@
-import {Request, Response, NextFunction} from "express";
+import {Request, Response, NextFunction, urlencoded} from "express";
 import { role } from "../types";
 import { AppError } from "./error.middleware";
 
@@ -15,7 +15,7 @@ export const bindUser = (req: Request, res: Response, next: NextFunction) => {
 export const restrictToRole = (role: role) => {
     return (req: Request, res: Response, next: NextFunction) => {
         const accessErr = new AppError(401, "Unauthorized");
-        if(!req.user){
+        if(!req.isAuthenticated()){
             return next(accessErr); // skip if Unauthenticated
         }
         else if(res.locals.currentUser.role !== role){
@@ -27,8 +27,17 @@ export const restrictToRole = (role: role) => {
 
 export const restrictToUnauth = (req: Request, res: Response, next: NextFunction) =>{
     const accessErr = new AppError(403, "Forbidden");
-    if(res.locals.currentUser){
+    if(req.isAuthenticated()){
         return next(accessErr);
+    }
+    next();
+}
+
+export const restrictToAuth = (req: Request, res: Response, next: NextFunction) => {
+    if(!req.isAuthenticated()){
+        const query =  new URLSearchParams();
+        query.append("error", "You must be logged-in to perform this action")
+        return res.redirect(`/log-in?${query}`);
     }
     next();
 }
