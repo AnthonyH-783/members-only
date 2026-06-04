@@ -15,7 +15,7 @@ export const saveUser = async(req: Request, res: Response) => {
         const {firstName, lastName, email, password} = matchedData(req);
         try{
             const passwordHash = await bcrypt.hash(password, 10);
-            const role: role = "member";
+            const role: role = "guest";
             await db.addUser({firstName, lastName, email, passwordHash, role});
             res.redirect("/log-in");
         }
