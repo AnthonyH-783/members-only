@@ -1,0 +1,19 @@
+.avatar {
+  width: 3rem;
+  height: 3rem;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: var(--surface-2);
+  border: 1px solid var(--border-default);
+
+  color: var(--text-primary);
+
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
