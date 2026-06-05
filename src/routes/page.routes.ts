@@ -14,7 +14,9 @@ const formRenderer = (page: string) => {
     }
 }
 
-pageRouter.get("/", (req, res) => res.render("index"));
+pageRouter.get("/", (req, res) => res.redirect("/messages"));
+
+pageRouter.get("/messages", (req, res) => res.render("index", {currentPage: "board", activeTab: "all"}));
 
 pageRouter.get("/join", restrictToRole("guest"), formRenderer("join"));
 

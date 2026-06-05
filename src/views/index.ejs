@@ -12,7 +12,13 @@
 <body>
     
     <%- include("components/sidebar", {currentPage: "board"}) %>
-    
+    <div class="main">
+            <% if(currentPage === "board"){ %>
+                <%-include("components/boardHeader", {activeTab}) %>
+            <% } %>
+    </div>
+
+
     
 </body>
 </html>

@@ -1,0 +1,20 @@
+<header class="board-header">
+
+    <div class="board-header__top">
+        <h1 class="board-header__title">Message Board</h1>
+        <% if(currentUser.role === "member" || currentUser.role === "admin"){ %>
+            <p class="board-header__subtitle">
+                You're a member - author names and dates are visible to you</p>
+        <% } else if(currentUser.role === "guest"){ %>
+            <p class="board-header__subtitle">
+                You're a guest - join the club to see author names and dates</p>
+        <% } %>
+    </div>
+
+    <div class="board-header__bottom">
+        <a class="board-header__link <%=activeTab === 'all' ? 'active bold' : '' %>"
+         href="/messages?tab=all">All Posts</a>
+        <a class="board-header__link <%=activeTab === 'members' ? 'active bold' : '' %>"
+         href="/messages?tab=members">Members Only</a>
+    </div>
+</header>

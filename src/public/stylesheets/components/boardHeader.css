@@ -1,0 +1,20 @@
+.board-header__top{
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.board-header__bottom{
+    display: flex;
+    gap: var(--space-6);
+    padding: var(--space-2) var(--space-6);
+}
+
+.board-header__link{
+    color: var(--text-secondary);
+}
+.board-header__link.active{
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+}

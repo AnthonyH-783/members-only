@@ -7,11 +7,19 @@
 /* Components */
 @import "./components/sidebar.css";
 @import "./components/error.css";
+@import "./components/boardHeader.css";
 
 /* Pages */
 
 @import "./pages/auth.css";
 
 body{
+    display: flex;
+    gap: var(--space-6);
     border-top: 3px solid var(--color-accent);
+}
+
+.main{
+    flex: 3;
+    padding: var(--space-6);
 }
