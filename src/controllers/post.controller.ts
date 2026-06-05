@@ -24,3 +24,15 @@ export const savePost = async (req: Request, res: Response, next: NextFunction) 
     }
 
 }
+
+export const deletePost = async(req: Request, res: Response, next: NextFunction) => {
+    try {
+        const {postId} = req.params;
+        await db.deletePost(Number(postId));
+        res.redirect("/");
+        
+    } catch (error) {
+        const err = new AppError(500, "Problem arose when deleting post");
+        next(err);  
+    }
+}

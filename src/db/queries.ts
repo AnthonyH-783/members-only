@@ -43,3 +43,8 @@ export const getPostById = async(postId:number): Promise<PostRecord> => {
     const post = rows[0];
     return post;
 }
+
+export const deletePost = async(postId:number) => {
+    const query = `DELETE FROM posts WHERE id = $1`;
+    await pool.query(query, [postId]);
+}
