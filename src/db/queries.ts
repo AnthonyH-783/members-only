@@ -5,14 +5,14 @@ import {newUser, newPost, PostRecord, UserRecord} from "../types.js";
 export const getUserByEmail = async (email: string): Promise<UserRecord> => {
 
     const query: string = "SELECT * FROM users WHERE email = $1";
-    const {rows}: QueryResult<any> = await pool.query(query, [email]);
+    const {rows}: QueryResult<UserRecord> = await pool.query<UserRecord>(query, [email]);
     const user = rows[0];
     return user;
 }
 
 export const getUserById = async (id: number) => {
     const query: string = "SELECT * FROM users WHERE id = $1";
-    const {rows}: QueryResult<any> = await pool.query(query, [id]);
+    const {rows}: QueryResult<UserRecord> = await pool.query<UserRecord>(query, [id]);
     const user = rows[0];
     return user;
 }
@@ -39,7 +39,7 @@ export const addPost = async({authorId, title, message}: newPost) => {
 
 export const getPostById = async(postId:number): Promise<PostRecord> => {
     const query:string = `SELECT * FROM posts WHERE id = $1`;
-    const {rows} =  await pool.query(query, [postId]);
+    const {rows} =  await pool.query<PostRecord>(query, [postId]);
     const post = rows[0];
     return post;
 }
@@ -47,4 +47,27 @@ export const getPostById = async(postId:number): Promise<PostRecord> => {
 export const deletePost = async(postId:number) => {
     const query = `DELETE FROM posts WHERE id = $1`;
     await pool.query(query, [postId]);
+}
+
+
+export const getPosts = async(role: string | null = null) => {
+    let query = `  SELECT p.id, p.user_id as "userId", p.title, p.message,
+                   p.created_at as "createdAt",
+                   u.first_name as "firstName",
+                   u.last_name as "lastName",
+                   u.role
+                   FROM posts p
+                   INNER JOIN users u
+                   ON p.user_id = u.id`;
+
+    const params:string[] = [];
+    if(role){
+        query += `  WHERE u.role = $1`;
+        params.push(role);
+    }
+   
+    const {rows} = await pool.query(query, params);
+     console.log(rows);
+    return rows;
+
 }

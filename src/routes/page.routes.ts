@@ -1,7 +1,7 @@
 import express from "express";
 import { Request, Response, NextFunction } from "express";
 import { restrictToRole, restrictToUnauth, requireAuth, requireOwnerOrAdmin } from "../middlewares/auth.middleware";
-
+import { getPosts } from "../controllers/post.controller";
 
 const pageRouter = express.Router();
 
@@ -16,7 +16,7 @@ const formRenderer = (page: string) => {
 
 pageRouter.get("/", (req, res) => res.redirect("/messages"));
 
-pageRouter.get("/messages", (req, res) => res.render("index", {currentPage: "board", activeTab: "all"}));
+pageRouter.get("/messages", getPosts);
 
 pageRouter.get("/join", restrictToRole("guest"), formRenderer("join"));
 

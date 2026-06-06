@@ -4,11 +4,12 @@
 
 .sidebar {
   width: var(--sidebar-width);
-  min-height: 100vh;
+  max-height: 100vh;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: sticky;
 
   padding: var(--space-6);
 

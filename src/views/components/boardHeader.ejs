@@ -12,9 +12,9 @@
     </div>
 
     <div class="board-header__bottom">
-        <a class="board-header__link <%=activeTab === 'all' ? 'active bold' : '' %>"
-         href="/messages?tab=all">All Posts</a>
-        <a class="board-header__link <%=activeTab === 'members' ? 'active bold' : '' %>"
-         href="/messages?tab=members">Members Only</a>
+        <a class="board-header__link <%=activeTab == null ? 'active bold' : '' %>"
+         href="/messages">All Posts</a>
+        <a class="board-header__link <%=activeTab === 'member' ? 'active bold' : '' %>"
+         href="/messages?tab=member">Members Only</a>
     </div>
 </header>

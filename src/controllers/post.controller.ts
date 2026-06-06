@@ -2,7 +2,7 @@ import * as db from "../db/queries";
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "../middlewares/error.middleware";
 import { validationResult, matchedData } from "express-validator";
-
+import formatPosts from "./formatters/postFormatter";
 export const savePost = async (req: Request, res: Response, next: NextFunction) => {
 
     try{
@@ -36,3 +36,19 @@ export const deletePost = async(req: Request, res: Response, next: NextFunction)
         next(err);  
     }
 }
+
+export const getPosts = async(req: Request, res: Response, next: NextFunction) => {
+    try{
+        const {tab} = req.query;
+        const activeTab = (typeof tab === 'string') ? tab : null;
+        const posts = await db.getPosts(activeTab);
+       formatPosts(posts);
+       console.log(posts);
+        res.render("index", {posts, currentPage: "board", activeTab});
+    }
+    catch(error){
+        const err = new AppError(500, "Problem arose when retrieve message board");
+        next(err);
+    }
+    
+} 

@@ -1,0 +1,12 @@
+.user-datetime{
+    display: flex;
+}
+.user-datime__copy{
+    display: flex;
+    flex-direction: column;
+}
+.user-datetime__subtitle {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}

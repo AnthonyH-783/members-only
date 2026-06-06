@@ -1,0 +1,30 @@
+<div class="post">
+    <div class="post__top">
+        <h3 class="post__title">
+            <%=post.title%>
+        </h3>
+        <%- include("status-badge", {role: post.role}) %>
+
+    </div>
+
+    <div class="post__middle">
+        <p>
+            <%=post.message%>
+        </p>
+    </div>
+
+    <div class="post__bottom">
+        
+        <%- include("user-datetime", {
+            firstName: post.firstName,
+            lastName: post.lastName,
+            createdAt: post.createdAt
+        
+        }) %>
+        <% if(currentUser.role === "admin" || currentUser.id === post.userId){ %>
+            <form action="/posts/<%=post.id%>/delete" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        <% } %>
+    </div>
+</div>
