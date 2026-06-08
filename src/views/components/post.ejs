@@ -1,4 +1,4 @@
-<div class="post <%=post.role%>">
+<div class="post <%=(currentUser && currentUser.role !== 'guest') ? post.role : ''%>">
     <div class="post__top">
         <h4 class="post__title">
             <%=post.title%>

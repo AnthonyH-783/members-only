@@ -1,7 +1,9 @@
 <div class="user-datetime">
-    <%-include("avatar", {firstName, lastName}) %>
-    <div class="user-datetime__copy">
-        <h4><%=firstName%> <%=lastName%></h4>
-        <p class="user-datetime__subtitle"><%=createdAt%></p>
-    </div>
+    <% if(currentUser && currentUser.role !== "guest"){ %>
+        <%-include("avatar", {firstName, lastName}) %>
+        <div class="user-datetime__copy">
+            <h4><%=firstName%> <%=lastName%></h4>
+            <p class="user-datetime__subtitle"><%=createdAt%></p>
+        </div>
+        <%} %>
 </div>
