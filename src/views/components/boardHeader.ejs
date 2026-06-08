@@ -22,7 +22,9 @@
     <div class="board-header__bottom">
         <a class="board-header__link <%=activeTab == null ? 'active bold' : '' %>"
          href="/messages">All Posts</a>
-        <a class="board-header__link <%=activeTab === 'member' ? 'active bold' : '' %>"
-         href="/messages?tab=member">Members Only</a>
+         <%if(currentUser && currentUser.role !== "guest"){ %>
+            <a class="board-header__link <%=activeTab === 'member' ? 'active bold' : '' %>"
+            href="/messages?tab=member">Members Only</a>
+        <% } %>
     </div>
 </header>
