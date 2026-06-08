@@ -24,12 +24,23 @@ export const savePost = async (req: Request, res: Response, next: NextFunction) 
     }
 
 }
+export const getPostDeleteForm = async(req:Request, res: Response, next: NextFunction) => {
+    try{
+        const {postId} = req.params;
+        const post = await db.getPostById(Number(postId));
+        return res.render("pages/delete-post", {post});
+    }
+    catch(error){
+        const err = new AppError(500, "Couldn't retrieve post delete form");
+        next(err);
+    }
+}
 
 export const deletePost = async(req: Request, res: Response, next: NextFunction) => {
     try {
         const {postId} = req.params;
         await db.deletePost(Number(postId));
-        res.redirect("/");
+        res.redirect("/messages");
         
     } catch (error) {
         const err = new AppError(500, "Problem arose when deleting post");

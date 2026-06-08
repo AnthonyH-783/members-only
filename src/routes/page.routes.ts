@@ -1,7 +1,7 @@
 import express from "express";
 import { Request, Response, NextFunction } from "express";
 import { restrictToRole, restrictToUnauth, requireAuth, requireOwnerOrAdmin } from "../middlewares/auth.middleware";
-import { getPosts } from "../controllers/post.controller";
+import * as postsController from "../controllers/post.controller";
 
 const pageRouter = express.Router();
 
@@ -16,7 +16,7 @@ const formRenderer = (page: string) => {
 
 pageRouter.get("/", (req, res) => res.redirect("/messages"));
 
-pageRouter.get("/messages", getPosts);
+pageRouter.get("/messages", postsController.getPosts);
 
 pageRouter.get("/join", restrictToRole("guest"), formRenderer("join"));
 
@@ -26,7 +26,7 @@ pageRouter.get("/sign-up", restrictToUnauth, formRenderer("sign-up"));
 
 pageRouter.get("/posts/new", requireAuth, formRenderer("new-post"));
 
-pageRouter.get("/posts/:postId/delete", requireOwnerOrAdmin, formRenderer("deletePost"));
+pageRouter.get("/posts/:postId/delete", requireOwnerOrAdmin, postsController.getPostDeleteForm);
 
 
 
