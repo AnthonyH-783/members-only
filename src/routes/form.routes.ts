@@ -16,4 +16,6 @@ formRouter.post("/messages/new", requireAuth, validNewPost, postsController.save
 
 formRouter.post("/posts/:postId/delete", requireOwnerOrAdmin, postsController.deletePost);
 
+formRouter.post("/posts/new", postsController.createPost);
+
 export default formRouter;

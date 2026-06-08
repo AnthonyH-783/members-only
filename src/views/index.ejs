@@ -14,11 +14,13 @@
     <%- include("components/sidebar", {currentPage: "board"}) %>
     <div class="main">
             <% if(currentPage === "board"){ %>
-                <%- include("components/boardHeader", {activeTab}) %>
-                <% posts.forEach((post) => { %>
-                    <%- include("components/post", {post})%>
-                <% }); %>
-            <% } %>
+                <div class="posts-container">
+                    <%- include("components/boardHeader", {activeTab}) %>
+                    <% posts.forEach((post) => { %>
+                        <%- include("components/post", {post})%>
+                    <% }); %>
+                <% } %>
+            </div>
 
     </div>
 

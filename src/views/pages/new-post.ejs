@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <title>New Post</title>
+</head>
+<body>
+    <div class="auth-page">
+      <a class="go-back" href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-icon lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      </a>
+      
+
+  <form class="auth-card" action="/forms/posts/new" method="POST">
+
+    <div class="auth-header">
+      <h1 class="auth-title">Create new post</h1>
+      <p class="auth-subtitle">
+        Publish a post to the message board
+      </p>
+        <% if(locals.error){ %>
+          <div class="error">
+              <span><%=error%></span>
+          </div>
+
+        <%} %>
+    </div>
+
+    <div class="auth-body">
+
+      <div class="auth-field">
+        <label for="title" class="auth-label">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          class="auth-input"
+          placeholder="Post Title"
+          required
+        />
+      </div>
+
+      <div class="auth-field">
+        <label for="Message" class="auth-label">Message</label>
+        <textarea name="message"></textarea>
+      </div>
+
+    </div>
+
+    <div class="auth-actions">
+
+      <button type="submit" class="auth-button auth-button--primary font-bold">
+        Submit
+      </button>
+
+
+    </div>
+
+  </form>
+
+</div>
+    
+</body>
+</html>

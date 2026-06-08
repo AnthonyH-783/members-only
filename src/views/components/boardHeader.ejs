@@ -2,12 +2,20 @@
 
     <div class="board-header__top">
         <h1 class="board-header__title">Message Board</h1>
-        <% if(currentUser.role === "member" || currentUser.role === "admin"){ %>
-            <p class="board-header__subtitle">
-                You're a member - author names and dates are visible to you</p>
-        <% } else if(currentUser.role === "guest"){ %>
-            <p class="board-header__subtitle">
-                You're a guest - join the club to see author names and dates</p>
+        <% if(currentUser){ %>
+            <% if(currentUser.role === "member" || currentUser.role === "admin"){ %>
+                <p class="board-header__subtitle">
+                You're a member - author names and dates are visible to you
+                </p>
+            <% } else if(currentUser.role === "guest"){ %>
+                    <p class="board-header__subtitle">
+                    You're a guest - join the club to see author names and dates
+                    </p>
+            <% } %>
+        <% } else { %>
+                <p class="board-header__subtitle">
+                    Sign-in and join the clubhouse to see more
+                </p>
         <% } %>
     </div>
 

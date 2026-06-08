@@ -24,7 +24,7 @@ pageRouter.get("/log-in", restrictToUnauth, formRenderer("log-in"));
 
 pageRouter.get("/sign-up", restrictToUnauth, formRenderer("sign-up"));
 
-pageRouter.get("/posts/new", requireAuth, formRenderer("newPost"));
+pageRouter.get("/posts/new", requireAuth, formRenderer("new-post"));
 
 pageRouter.get("/posts/:postId/delete", requireOwnerOrAdmin, formRenderer("deletePost"));
 

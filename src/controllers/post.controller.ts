@@ -50,5 +50,19 @@ export const getPosts = async(req: Request, res: Response, next: NextFunction) =
         const err = new AppError(500, "Problem arose when retrieve message board");
         next(err);
     }
+ 
     
 } 
+
+export const createPost = async(req: Request, res: Response, next: NextFunction) => {
+    try{
+        const {title, message} = req.body;
+        const authorId = res.locals.currentUser.id;
+        await db.addPost({authorId, title, message});
+        res.redirect("/messages");
+    }
+    catch(error){
+        const err =new AppError(500, "Problem arose when creating new post");
+        next(err);
+    }
+}

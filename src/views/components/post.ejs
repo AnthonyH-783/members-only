@@ -1,8 +1,8 @@
-<div class="post">
+<div class="post <%=post.role%>">
     <div class="post__top">
-        <h3 class="post__title">
+        <h4 class="post__title">
             <%=post.title%>
-        </h3>
+        </h4>
         <%- include("status-badge", {role: post.role}) %>
 
     </div>
@@ -21,9 +21,9 @@
             createdAt: post.createdAt
         
         }) %>
-        <% if(currentUser.role === "admin" || currentUser.id === post.userId){ %>
-            <form action="/posts/<%=post.id%>/delete" method="post">
-                <button type="submit">Delete</button>
+        <% if(currentUser && (currentUser.role === "admin" || currentUser.id === post.userId)){ %>
+            <form action="/posts/<%=post.id%>/delete" method="get">
+                <button class="post__delete-btn " type="submit">Delete</button>
             </form>
         <% } %>
     </div>

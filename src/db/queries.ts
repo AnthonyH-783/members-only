@@ -32,7 +32,7 @@ export const updateUserToMember = async(id: number) => {
 }
 
 export const addPost = async({authorId, title, message}: newPost) => {
-    const query:string = `INSERT INTO posts (authorId, title, message)
+    const query:string = `INSERT INTO posts (user_id, title, message)
                           VALUES ($1, $2, $3)`;
     await pool.query(query, [authorId, title, message])
 }
